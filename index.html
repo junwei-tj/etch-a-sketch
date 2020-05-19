@@ -5,8 +5,22 @@
         <link rel="stylesheet" type="text/css" href="style.css">        
     </head>
     <body>
-        <button id="clear-button" class="center">Clear</button>
-        <div id="container"></div>
+        <p>Etch A Sketch</p>        
+        <div id="container" class="container"></div>
+        <div id="settings">
+            <button id="reset-button">Reset</button>
+            <div id="radio-div">
+                <label for="default-colors" class="radio-buttons">
+                    <input id="default-colors" value="default" type="radio" name="settings" checked> Default
+                </label>
+                <label for="random-colors" class="radio-buttons">
+                    <input id="random-colors" value="random" type="radio" name="settings"> Random Colours
+                </label>
+                <label for="custom-colors" class="radio-buttons">
+                    <input id="custom-colors" value="custom" type="radio" name="settings"> Custom Colours
+                </label>
+            </div>
+        </div>
         <script type="text/javascript" src="sketch.js"></script>
     </body>
 </html>

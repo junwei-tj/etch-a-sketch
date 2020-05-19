@@ -1,16 +1,20 @@
-.cell {
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-    display: inline-block;
-    text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+
+:root {
+    background-color: #ebf5ae;
+    font-size: 12px;
 }
 
-.block{
-    padding: 0px;
-    margin: 0px;
-    background-color:#FFF;
-    border: 1px solid #555;
+.cell {
+    display: inline-block;
+    background-color: white;
+    opacity: 0.5;
+}
+
+.cell-hovered {
+    display: inline-block;
+    background-color: lightblue;
+    opacity: 0.5;
 }
 
 .center {
@@ -22,9 +26,39 @@
 .container {
     display: grid;
     margin: auto;
-    width: 600px;
-    height: 600px;
+    width: 500px;
+    height: 500px;
     border-style: solid;
-    border-width: 1px;
-    border-color: yellow;
+    border-width: 5px;
+    border-color: #050d80;
+    background-color: white;
+}
+
+p {
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+}
+
+#reset-button {
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+#radio-div {
+    margin-top: 10px;
+    margin-right: 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+#settings {
+    display: flex;
+    width: 500px;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.radio-buttons {
+    margin-right: 10px;
 }
