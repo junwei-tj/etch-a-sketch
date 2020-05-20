@@ -80,3 +80,10 @@ p {
     margin-top: 10px;
     margin-left: 20px;
 }
+
+.footer {
+    text-align: right;
+    position: absolute;
+    bottom: 5px;
+    right: 5px; 
+}
