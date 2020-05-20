@@ -7,7 +7,6 @@ function createGrid(n) {
         cell.addEventListener("mouseover", () => {
             cell.className = "cell-hovered";
             cell.style.opacity = Number(cell.style.opacity) + 0.1;
-            console.log(cell.style.opacity);
         });
         container.appendChild(cell);
     }
@@ -27,26 +26,27 @@ function randomRGBValue() { // for rainbow colored cells
 function changeColors() {
     const cells = document.querySelectorAll(".cell, .cell-hovered");
     if (document.getElementById("default-colors").checked) {
-        cells.forEach(cell => {
-            if (cell.style.backgroundColor == "white") { //leave rainbow colored cells as it is
-                cell.style.opacity = 0.4;
-            }
-            cell.addEventListener("mouseover", () => {
-                cell.className = "cell-hovered";
-                cell.style.backgroundColor = "lightblue";
-                cell.style.opacity = Number(cell.style.opacity) + 0.1;
-                console.log(cell.style.opacity);
-            })            
-        })
+        cells.forEach(cell => changeCellColor(cell, "lightblue"));
     } else if (document.getElementById("random-colors").checked) {
         cells.forEach(cell => {
-            cell.addEventListener("mouseover", () => {
-                cell.className = "cell-hovered";
-                cell.style.backgroundColor = `rgb(${randomRGBValue()}, ${randomRGBValue()}, ${randomRGBValue()})`;
-                console.log(cell.style.opacity);
-            })            
+            changeCellColor(cell, `rgba(${randomRGBValue()}, ${randomRGBValue()}, ${randomRGBValue()})`);                   
         })
-    } 
+    } else if (document.getElementById("custom-colors").checked) { 
+        const colorPicker = document.querySelector("#color-picker");
+        let colorSelected = colorPicker.value;
+        colorPicker.addEventListener("change", () => {
+            colorSelected = colorPicker.value;
+            cells.forEach(cell => changeCellColor(cell, colorSelected));
+        })    
+        console.log(colorSelected);          
+        cells.forEach(cell => changeCellColor(cell, colorSelected)); // for if button selected but color not changed
+    }
+}
+
+function changeCellColor(cell, color) {    
+    cell.addEventListener("mouseover", () => {
+        cell.style.backgroundColor = color;
+    })   
 }
 
 // initialize grid
@@ -60,6 +60,8 @@ resetButton.addEventListener("click", (e) => {
     clearGrid();
     let gridSize = prompt("How many squares per side?");
     createGrid(gridSize);
+    const defaultButton = document.querySelector("#default-colors");
+    defaultButton.checked = true;
 });
 
 // prepare buttons for changing colors
